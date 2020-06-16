@@ -1,6 +1,7 @@
 const db = require('../models');
 const User = db.users;
 const passport = require('passport');
+const Carro = db.carros;
 
 // cria novo usuario
 exports.create = (req, res) => {
@@ -26,48 +27,64 @@ exports.create = (req, res) => {
 //login logic
 exports.login = (req, res) => {
     passport.authenticate("local")(req, res, () => {
-        res.send({
-            success: true
-        });
+        res.status(200).send();
     });
 }
 
 //logout logic
-exports.logout = (req, res) => {    
+exports.logout = (req, res) => {
     req.logout();
     res.send(true);
 };
 
 //testes
-exports.teste = (req,res) => {
+exports.teste = (req, res) => {
     let author;
-    if(req.user){
+    if (req.user) {
         author = {
             id: req.user._id,
             username: req.user.username
         }
-    }    
+    }
     console.log(author);
     res.status(200).send();
 };
 
-exports.checkAuthentication = (req,res,next) => {
-    if(req.isAuthenticated()){
-        console.log(req.session);
-        res.send({success: true})
-        next();
-    } else{
-        console.log(req.session);
-        console.log('false');
-        res.send({success: false});
+//middleware que checa pra ver se o carro pertence ao usuario
+exports.checkCarOwnership = (req, res, next) => {    
+    if (req.isAuthenticated()) {        
+        Carro.findById(req.params.id, (err, foundCar) => {
+            if (err) {
+                res.status(404).send();
+            } else {
+                if (foundCar.author.id.equals(req.user._id)) {
+                    next();
+                } else {
+                    res.status(401).send();
+                }
+            }
+        })
+    }else{ 
+        res.status(401).send({
+            message: "você precisa estar logado"
+        });
     }
 }
 
 //checa se o usuario esta logado
-exports.isLoggedIn = (req, res) => {
+exports.isLoggedIn2 = (req, res) => {
     if (req.isAuthenticated()) {
         res.send(true);
     } else {
         res.send(false);
+    }
+}
+
+//checa se o usuario esta logado
+exports.isLoggedIn = (req, res, next) => {
+    if (req.isAuthenticated()) {
+        return next()
+    } else {
+        res.status(401).send();
     }
 }

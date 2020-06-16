@@ -13,10 +13,10 @@ module.exports = app => {
     router.get("/logout", user.logout);
 
     //checa se o usuario esta autenticado
-    router.get("/isLoggedIn", user.isLoggedIn);
+    router.get("/isLoggedIn", user.isLoggedIn2);
 
     //teste
-    router.get("/teste", user.teste);
+    //router.get("/teste", user.teste);
 
     app.use('/api/user', router);
 };

@@ -1,10 +1,11 @@
 module.exports = app => {
     const carros = require("../controllers/carro.controller");
+    const user = require("../controllers/user.controller");
 
     var router = require("express").Router();
 
     // cria um novo carro
-    router.post("/", carros.create);
+    router.post("/", user.isLoggedIn, carros.create);
 
     // Retorna todos os carros
     router.get("/", carros.findAll);
@@ -16,13 +17,13 @@ module.exports = app => {
     router.get("/:id", carros.findOne);
 
     // atualiza um carro pelo id
-    router.put("/:id", carros.update);
+    router.put("/:id", user.checkCarOwnership, carros.update);
 
     // deleta um carro pelo id
-    router.delete("/:id", carros.delete);
+    router.delete("/:id", user.checkCarOwnership, carros.delete);
 
     // deleta todos os carros
-    router.delete("/", carros.deleteAll);
+    //router.delete("/", carros.deleteAll);
 
     app.use('/api/carros', router);
 };
