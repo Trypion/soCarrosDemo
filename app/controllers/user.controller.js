@@ -38,10 +38,17 @@ exports.logout = (req, res) => {
     res.send(true);
 };
 
-
 //testes
 exports.teste = (req,res) => {
-    console.log("autenticado");    
+    let author;
+    if(req.user){
+        author = {
+            id: req.user._id,
+            username: req.user.username
+        }
+    }    
+    console.log(author);
+    res.status(200).send();
 };
 
 exports.checkAuthentication = (req,res,next) => {

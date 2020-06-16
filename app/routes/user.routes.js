@@ -16,7 +16,7 @@ module.exports = app => {
     router.get("/isLoggedIn", user.isLoggedIn);
 
     //teste
-    router.get("/teste", user.checkAuthentication, user.teste);
+    router.get("/teste", user.teste);
 
     app.use('/api/user', router);
 };
