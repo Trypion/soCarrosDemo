@@ -74,9 +74,19 @@ exports.checkCarOwnership = (req, res, next) => {
 //checa se o usuario esta logado
 exports.isLoggedIn2 = (req, res) => {
     if (req.isAuthenticated()) {
-        res.send(true);
+        data = {
+            id: req.user._id,
+            username: req.user.username,
+            isLoggedIn: true            
+        }        
+        res.send(data);
     } else {
-        res.send(false);
+        data = {
+            id: '',
+            username: '',            
+            isLoggedIn: false            
+        }   
+        res.send(data);
     }
 }
 
