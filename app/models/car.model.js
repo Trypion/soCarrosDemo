@@ -5,19 +5,14 @@ module.exports = mongoose => {
         preco: Number,
         cor: String,
         descricao: String,
-        imagem: String,
-        vendido: Boolean,
+        imagem: String,        
         author: {
             id: {
                 type: mongoose.Schema.Types.ObjectId,
                 ref: "User"
             },
             username: String
-        },
-        comments: [{
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "Comment"
-        }]
+        },        
     }, {
         timestamps: true
     });

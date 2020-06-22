@@ -18,8 +18,7 @@ exports.create = (req, res) => {
         preco: req.body.preco,
         cor: req.body.cor,
         descricao: req.body.descricao,
-        imagem: req.body.imagem,
-        vendido: req.body.vendido ? req.body.vendido : false,
+        imagem: req.body.imagem,        
         author: {
             id: req.user.id,
             username: req.user.username

@@ -3,17 +3,20 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
+const path = require('path');
+
+const seedDB = require("./seeds");
 
 const app = express();
 
 const db = require('./app/models');
 const User = db.users;
 
-const corsOptions = {
-    origin: 'http://localhost:4200',
-    credentials: true,
-
+const corsOptions = {    
+    credentials: true
 }
+
+app.use(express.static('spice-demo'));
 
 app.use(cors(corsOptions));
 
@@ -55,11 +58,17 @@ app.use((req, res, next) => {
     next();
 });
 
+seedDB();
+
+//rotas
 require("./app/routes/carro.routes")(app);
 require("./app/routes/user.routes")(app);
+app.use((req, res, next) =>{
+    res.sendFile(path.join(__dirname, "spice-demo", "index.html"));
+});
 
 // set port, listen for requests
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}.`);
+    console.log(`Server esta rodando na porta ${PORT}.`);
 });
