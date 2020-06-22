@@ -32,8 +32,8 @@ let data = [{
     descricao: "Uma linda ferrari vermelha como deus quis",
     imagem: "https://i.imgur.com/M4I8TX3.jpg",
     author: {
-        id: "5eebcf564373a1086897d9c2",
-        username: "Israel"
+        id: "5eebcf564373a1234897d9c2",
+        username: "Santa"
     },
 }, {
     modelo: "Fusca",
@@ -54,8 +54,8 @@ let data = [{
     descricao: "o super esportivo dos sonhos",
     imagem: "https://i.imgur.com/JEjX5sQ.jpg",
     author: {
-        id: "5eebcf564373a1086897d9c2",
-        username: "Israel"
+        id: "5eebcf564373a1234897d9c2",
+        username: "Santa"
     },
 }, {
     modelo: "Ferrari 458 Spider",
