@@ -25,5 +25,7 @@ e seguir as instruções ou acessar o link: <a href="http://socarros-env.eba-wh9
   
   ex.: O usuario Israel não consegue editar nem deletar os carros Ferrari e McLaren pois não foram enviados por ele.  
   
+  obs.: como as imagens são url's do imgur pode haver lentidão ao carregar as imagens a primeira vez que o site é aberto
+  
 </p>
 
