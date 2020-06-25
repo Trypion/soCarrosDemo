@@ -8,7 +8,11 @@ e seguir as instruções ou acessar o link: <a href="http://socarros-env.eba-wh9
 
 <h1>Instruções</h1>
 
-<p> 
+<p>
+  para testes você pode clonar este repositório
+e seguir as instruções ou acessar o link: <a href="http://socarros-env.eba-wh9jbrui.us-east-1.elasticbeanstalk.com/"> Deploy do site na AWS </a>
+  
+  
   antes de tudo você irá precisar do mongoDB instalado ou trocar a url dentro de config/db.config para sua mongoDB cloud caso queira usar uma
 
   <ol>
