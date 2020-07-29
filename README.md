@@ -18,7 +18,7 @@ e seguir as instruções ou acessar o link: <a href="http://socarros-env.eba-wh9
   <ol>
     <li> execute npm install na pasta do projeto </li>
     <li> em seguida execute npm start </li>
-    <li> se tudo der certo o servidor vai adicionar alguns carros e um usuário pra você </li>
+    <li> se tudo der certo o servidor vai adicionar alguns carros e um usuário para você </li>
     <li> você vai poder acessar em localhost:3000 no seu browser </li>
   </ol>
   
